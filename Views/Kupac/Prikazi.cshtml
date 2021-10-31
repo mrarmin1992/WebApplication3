@@ -1,0 +1,39 @@
+﻿@using WebApplication3.Models
+
+@{
+    ViewBag.Title = "Prikazi";
+
+    var podaci = (List<KupacPrikaziViewModel>) ViewData["podaci-kljuc"];
+    
+
+
+}
+
+<h2>Prikazi tabelu kupaca </h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Score</th>    
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (KupacPrikaziViewModel x in podaci)
+        {
+            <tr>
+                <td>@x.Id</td>
+                <td>@x.Name</td>
+                <td>@x.Score</td>
+                <td>
+                    <a class="btn btn-danger" href="/Kupac/Obrisi?KupacId=@x.Id">Obrisi</a>
+                    <a class="btn btn-success" href="/Kupac/UrediForm?KupacId=@x.Id">Uredi</a>
+                </td>  
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Kupac/DodajForm" class="btn btn-primary">Dodaj novo</a>
+<a href="/Kupac/Index" class="btn btn-primary">Sortirana tabela</a>
+
